@@ -44,9 +44,18 @@ export type PlasmicWorkItem__VariantsArgs = {};
 type VariantPropType = keyof PlasmicWorkItem__VariantsArgs;
 export const PlasmicWorkItem__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicWorkItem__ArgsType = {};
+export type PlasmicWorkItem__ArgsType = {
+  test?: string;
+  headline?: React.ReactNode;
+  description?: React.ReactNode;
+};
+
 type ArgPropType = keyof PlasmicWorkItem__ArgsType;
-export const PlasmicWorkItem__ArgProps = new Array<ArgPropType>();
+export const PlasmicWorkItem__ArgProps = new Array<ArgPropType>(
+  "test",
+  "headline",
+  "description"
+);
 
 export type PlasmicWorkItem__OverridesType = {
   root?: p.Flex<"div">;
@@ -57,6 +66,9 @@ export type PlasmicWorkItem__OverridesType = {
 };
 
 export interface DefaultWorkItemProps {
+  test?: string;
+  headline?: React.ReactNode;
+  description?: React.ReactNode;
   className?: string;
 }
 
@@ -80,13 +92,13 @@ function PlasmicWorkItem__RenderFunc(props: {
       <div
         data-plasmic-name={"headline"}
         data-plasmic-override={overrides.headline}
-        className={classNames(
-          defaultcss.all,
-          defaultcss.__wab_text,
-          sty.headline
-        )}
+        className={classNames(defaultcss.all, sty.headline)}
       >
-        {"Enter some text"}
+        {p.renderPlasmicSlot({
+          defaultContents: "Enter some text",
+          value: args.headline,
+          className: classNames(sty.slotTargetHeadline)
+        })}
       </div>
 
       <div
@@ -106,13 +118,12 @@ function PlasmicWorkItem__RenderFunc(props: {
       <div
         data-plasmic-name={"description"}
         data-plasmic-override={overrides.description}
-        className={classNames(
-          defaultcss.all,
-          defaultcss.__wab_text,
-          sty.description
-        )}
+        className={classNames(defaultcss.all, sty.description)}
       >
-        {"Enter some text"}
+        {p.renderPlasmicSlot({
+          defaultContents: "Enter some text",
+          value: args.description
+        })}
       </div>
     </div>
   ) as React.ReactElement | null;
