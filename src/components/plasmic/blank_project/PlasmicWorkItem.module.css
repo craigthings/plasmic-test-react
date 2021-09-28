@@ -1,0 +1,51 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 248px;
+  width: 195px;
+  background: #ffffff;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: relative;
+  border-radius: 10px;
+  padding: 10px 10px 11px 14px;
+  border: 1px solid #efefef;
+}
+.headline {
+  position: relative;
+  font-weight: 700;
+  align-self: auto;
+  height: 28px;
+  padding-bottom: 0px;
+  margin-bottom: 5px;
+  font-size: 19px;
+  flex-shrink: 0;
+}
+.freeBox {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 178px;
+}
+.img {
+  position: relative;
+  object-fit: cover;
+  width: 135px;
+  height: 114px;
+  align-self: auto;
+  flex-shrink: 0;
+}
+.img > picture > img {
+  object-fit: cover;
+}
+.img > .__wab_img-spacer > img {
+  object-fit: cover;
+}
+.description {
+  position: relative;
+  margin-top: 6px;
+}
