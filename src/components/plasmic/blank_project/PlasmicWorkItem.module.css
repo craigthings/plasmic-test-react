@@ -59,3 +59,8 @@
 }
 .text__wSfNr {
 }
+.subheadline {
+  position: relative;
+  transition-property: all;
+  transition-duration: 1s;
+}

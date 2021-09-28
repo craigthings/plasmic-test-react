@@ -35,9 +35,11 @@
 }
 .workItem:global(.__wab_instance) {
   position: relative;
+  width: 202px;
+  height: 274px;
   flex-shrink: 0;
 }
 .text___5M1Mu {
 }
-.text__z9XrR {
+.text__eVqsf {
 }

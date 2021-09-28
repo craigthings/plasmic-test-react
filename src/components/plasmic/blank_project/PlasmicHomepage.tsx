@@ -88,6 +88,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 data-plasmic-name={"workItem"}
                 data-plasmic-override={overrides.workItem}
                 className={classNames("__wab_instance", sty.workItem)}
+                headline={"Enter some text"}
               />
             </div>
           </div>

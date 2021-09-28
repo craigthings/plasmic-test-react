@@ -63,6 +63,7 @@ export type PlasmicWorkItem__OverridesType = {
   freeBox?: p.Flex<"div">;
   img?: p.Flex<"img">;
   description?: p.Flex<"div">;
+  subheadline?: p.Flex<"div">;
 };
 
 export interface DefaultWorkItemProps {
@@ -125,16 +126,29 @@ function PlasmicWorkItem__RenderFunc(props: {
           value: args.description
         })}
       </div>
+
+      <div
+        data-plasmic-name={"subheadline"}
+        data-plasmic-override={overrides.subheadline}
+        className={classNames(
+          defaultcss.all,
+          defaultcss.__wab_text,
+          sty.subheadline
+        )}
+      >
+        {"Enter some text"}
+      </div>
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "headline", "freeBox", "img", "description"],
+  root: ["root", "headline", "freeBox", "img", "description", "subheadline"],
   headline: ["headline"],
   freeBox: ["freeBox", "img"],
   img: ["img"],
-  description: ["description"]
+  description: ["description"],
+  subheadline: ["subheadline"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -145,6 +159,7 @@ type NodeDefaultElementType = {
   freeBox: "div";
   img: "img";
   description: "div";
+  subheadline: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -212,6 +227,7 @@ export const PlasmicWorkItem = Object.assign(
     freeBox: makeNodeComponent("freeBox"),
     img: makeNodeComponent("img"),
     description: makeNodeComponent("description"),
+    subheadline: makeNodeComponent("subheadline"),
 
     // Metadata about props expected for PlasmicWorkItem
     internalVariantProps: PlasmicWorkItem__VariantProps,
