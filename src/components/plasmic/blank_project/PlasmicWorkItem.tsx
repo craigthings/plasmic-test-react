@@ -48,13 +48,15 @@ export type PlasmicWorkItem__ArgsType = {
   test?: string;
   headline?: React.ReactNode;
   description?: React.ReactNode;
+  another?: string;
 };
 
 type ArgPropType = keyof PlasmicWorkItem__ArgsType;
 export const PlasmicWorkItem__ArgProps = new Array<ArgPropType>(
   "test",
   "headline",
-  "description"
+  "description",
+  "another"
 );
 
 export type PlasmicWorkItem__OverridesType = {
@@ -70,6 +72,7 @@ export interface DefaultWorkItemProps {
   test?: string;
   headline?: React.ReactNode;
   description?: React.ReactNode;
+  another?: string;
   className?: string;
 }
 
@@ -94,6 +97,7 @@ function PlasmicWorkItem__RenderFunc(props: {
         data-plasmic-name={"headline"}
         data-plasmic-override={overrides.headline}
         className={classNames(defaultcss.all, sty.headline)}
+        id={"headline" as const}
       >
         {p.renderPlasmicSlot({
           defaultContents: "Enter some text",
