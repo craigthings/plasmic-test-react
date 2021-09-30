@@ -38,11 +38,16 @@ import * as sty from "./PlasmicWorkItem.module.css"; // plasmic-import: M60KbPHn
 
 import theMoreYouKnowgifBSaxVfZry from "./images/theMoreYouKnowgif.gif"; // plasmic-import: bSAXVfZRY/picture
 
-export type PlasmicWorkItem__VariantMembers = {};
+export type PlasmicWorkItem__VariantMembers = {
+  dark: "dark";
+};
 
-export type PlasmicWorkItem__VariantsArgs = {};
+export type PlasmicWorkItem__VariantsArgs = {
+  dark?: SingleBooleanChoiceArg<"dark">;
+};
+
 type VariantPropType = keyof PlasmicWorkItem__VariantsArgs;
-export const PlasmicWorkItem__VariantProps = new Array<VariantPropType>();
+export const PlasmicWorkItem__VariantProps = new Array<VariantPropType>("dark");
 
 export type PlasmicWorkItem__ArgsType = {
   test?: string;
@@ -72,6 +77,7 @@ export interface DefaultWorkItemProps {
   headline?: React.ReactNode;
   description?: React.ReactNode;
   another?: string;
+  dark?: SingleBooleanChoiceArg<"dark">;
   className?: string;
 }
 
@@ -90,7 +96,9 @@ function PlasmicWorkItem__RenderFunc(props: {
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      className={classNames(defaultcss.all, projectcss.root_reset, sty.root, {
+        [sty.root__dark]: hasVariant(variants, "dark", "dark")
+      })}
     >
       <div
         data-plasmic-name={"headline"}
@@ -101,7 +109,9 @@ function PlasmicWorkItem__RenderFunc(props: {
         {p.renderPlasmicSlot({
           defaultContents: "Enter some text",
           value: args.headline,
-          className: classNames(sty.slotTargetHeadline)
+          className: classNames(sty.slotTargetHeadline, {
+            [sty.slotTargetHeadline__dark]: hasVariant(variants, "dark", "dark")
+          })
         })}
       </div>
 
@@ -127,7 +137,14 @@ function PlasmicWorkItem__RenderFunc(props: {
       >
         {p.renderPlasmicSlot({
           defaultContents: "Enter some text",
-          value: args.description
+          value: args.description,
+          className: classNames(sty.slotTargetDescription, {
+            [sty.slotTargetDescription__dark]: hasVariant(
+              variants,
+              "dark",
+              "dark"
+            )
+          })
         })}
       </div>
     </div>
