@@ -1,32 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import WorkItem, { DefaultWorkItemProps, PlasmicWorkItem } from './components/plasmic/blank_project/PlasmicWorkItem';
+import { DefaultWorkItemProps, PlasmicWorkItem } from './components/plasmic/blank_project/PlasmicWorkItem';
 import gsap from 'gsap';
 
 ReactDOM.render(
   <React.StrictMode>
-    { component() }
+    <WorkItem 
+      headline='This is a headline'
+      description='This is a very long, very verbose description that refuses to end.'
+    />
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-function component() {
-  function initAnimation(dom: HTMLDivElement | null) {
-    if(dom){
-      gsap.from(dom.querySelector('#headline'), { duration: 1, opacity: 1, y: 0, ease: 'power3.out' });
-    }
-    
-  }
-  return <PlasmicWorkItem 
-    ref={ ref => initAnimation(ref) }
-    description='test'
-    headline='another test' 
-    test='1234'
-  />
+
+
+function WorkItem(props: DefaultWorkItemProps){
+  let ref = React.useRef<HTMLDivElement>(null);
+  let dom: HTMLDivElement | null;
+
+  useEffect(() => {
+    dom = ref.current;
+    if(!dom) return;
+
+    let headline = dom.querySelector('#headline') as HTMLElement;
+    gsap.from(headline, {duration: 1, opacity: 0, y: "-10"});
+
+    let description = dom.querySelector('#description') as HTMLElement;
+    gsap.from(description, {duration: 1, opacity: 0, x: "-20"});
+
+  });
+  
+  return (
+    <div ref={ref}>
+      <PlasmicWorkItem {...props} />
+    </div>
+  )
 }
+
+
 
 
 // If you want to start measuring performance in your app, pass a function
