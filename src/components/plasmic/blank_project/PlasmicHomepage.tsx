@@ -50,6 +50,7 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 export type PlasmicHomepage__OverridesType = {
   root?: p.Flex<"div">;
   workItem?: p.Flex<typeof WorkItem>;
+  text?: p.Flex<"div">;
 };
 
 export interface DefaultHomepageProps {
@@ -88,7 +89,20 @@ function PlasmicHomepage__RenderFunc(props: {
                 data-plasmic-name={"workItem"}
                 data-plasmic-override={overrides.workItem}
                 className={classNames("__wab_instance", sty.workItem)}
-                headline={"Enter some text"}
+                description={
+                  <div
+                    data-plasmic-name={"text"}
+                    data-plasmic-override={overrides.text}
+                    className={classNames(
+                      defaultcss.all,
+                      defaultcss.__wab_text,
+                      sty.text
+                    )}
+                  >
+                    {"Cras dignissim tempus metus, non finibus nisl volutpat"}
+                  </div>
+                }
+                headline={"Lorem Ipsum"}
               />
             </div>
           </div>
@@ -99,8 +113,9 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "workItem"],
-  workItem: ["workItem"]
+  root: ["root", "workItem", "text"],
+  workItem: ["workItem", "text"],
+  text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -108,6 +123,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   workItem: typeof WorkItem;
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -172,6 +188,7 @@ export const PlasmicHomepage = Object.assign(
   {
     // Helper components rendering sub-elements
     workItem: makeNodeComponent("workItem"),
+    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

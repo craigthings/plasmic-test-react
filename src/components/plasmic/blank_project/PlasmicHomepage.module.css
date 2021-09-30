@@ -35,3 +35,6 @@
   height: 274px;
   flex-shrink: 0;
 }
+.text {
+  height: auto;
+}
