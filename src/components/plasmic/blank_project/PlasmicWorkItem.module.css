@@ -27,8 +27,6 @@
   font-size: 19px;
   font-weight: 700;
 }
-.text__vGzme {
-}
 .freeBox {
   display: flex;
   position: relative;
@@ -56,8 +54,6 @@
   margin-top: 6px;
   display: flex;
   flex-direction: row;
-}
-.text__wSfNr {
 }
 .subheadline {
   position: relative;
