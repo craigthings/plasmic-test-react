@@ -27,8 +27,13 @@ function WorkItem(props: DefaultWorkItemProps){
 
 function Index() {
   return (
-    <div style={{ width: "100%", padding: "100px", alignContent: "center" }}>
-      <WorkItem 
+    <div style={{ background: '#eeeeee', display: "flex", width: "100%", height: "100%", padding: "100px", justifyContent: "center", alignContent: "space-around", flexWrap: "wrap" }}>
+      <WorkItem
+        dark
+        headline='This is a headline'
+        description='This is a very long, very verbose description that refuses to end.'
+      />
+      <WorkItem
         headline='This is a headline'
         description='This is a very long, very verbose description that refuses to end.'
       />
