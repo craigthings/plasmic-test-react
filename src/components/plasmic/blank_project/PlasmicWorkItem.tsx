@@ -124,7 +124,10 @@ function PlasmicWorkItem__RenderFunc(props: {
           data-plasmic-name={"img"}
           data-plasmic-override={overrides.img}
           alt={""}
-          className={classNames(defaultcss.img, sty.img)}
+          className={classNames(defaultcss.img, sty.img, {
+            [sty.img__dark]: hasVariant(variants, "dark", "dark")
+          })}
+          id={"image" as const}
           src={theMoreYouKnowgifBSaxVfZry}
         />
       </div>
