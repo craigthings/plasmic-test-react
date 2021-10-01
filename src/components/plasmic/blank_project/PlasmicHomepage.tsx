@@ -30,6 +30,7 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
+import HorizonalContainer from "../../HorizonalContainer"; // plasmic-import: ImdPFYAZQh/component
 import WorkItem from "../../WorkItem"; // plasmic-import: M60KbPHn4A/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -37,11 +38,18 @@ import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-i
 import * as projectcss from "./plasmic_blank_project.module.css"; // plasmic-import: 5TUFsMr1jutmu8n3UiyCoV/projectcss
 import * as sty from "./PlasmicHomepage.module.css"; // plasmic-import: jznGXWeZ3e/css
 
-export type PlasmicHomepage__VariantMembers = {};
+export type PlasmicHomepage__VariantMembers = {
+  design: "design";
+};
 
-export type PlasmicHomepage__VariantsArgs = {};
+export type PlasmicHomepage__VariantsArgs = {
+  design?: SingleBooleanChoiceArg<"design">;
+};
+
 type VariantPropType = keyof PlasmicHomepage__VariantsArgs;
-export const PlasmicHomepage__VariantProps = new Array<VariantPropType>();
+export const PlasmicHomepage__VariantProps = new Array<VariantPropType>(
+  "design"
+);
 
 export type PlasmicHomepage__ArgsType = {};
 type ArgPropType = keyof PlasmicHomepage__ArgsType;
@@ -49,11 +57,12 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomepage__OverridesType = {
   root?: p.Flex<"div">;
-  workItem?: p.Flex<typeof WorkItem>;
-  text?: p.Flex<"div">;
+  freeBox?: p.Flex<"div">;
+  testimonials?: p.Flex<typeof HorizonalContainer>;
 };
 
 export interface DefaultHomepageProps {
+  design?: SingleBooleanChoiceArg<"design">;
   className?: string;
 }
 
@@ -80,31 +89,64 @@ function PlasmicHomepage__RenderFunc(props: {
           className={classNames(
             defaultcss.all,
             projectcss.root_reset,
-            sty.root
+            sty.root,
+            { [sty.root__design]: hasVariant(variants, "design", "design") }
           )}
         >
-          <div className={classNames(defaultcss.all, sty.freeBox__xgMrP)}>
-            <div className={classNames(defaultcss.all, sty.freeBox___9ZjHh)}>
-              <WorkItem
-                data-plasmic-name={"workItem"}
-                data-plasmic-override={overrides.workItem}
-                className={classNames("__wab_instance", sty.workItem)}
-                description={
-                  <div
-                    data-plasmic-name={"text"}
-                    data-plasmic-override={overrides.text}
-                    className={classNames(
-                      defaultcss.all,
-                      defaultcss.__wab_text,
-                      sty.text
-                    )}
-                  >
-                    {"Cras dignissim tempus metus, non finibus nisl volutpat"}
-                  </div>
-                }
-                headline={"Lorem Ipsum"}
-              />
-            </div>
+          <div
+            data-plasmic-name={"freeBox"}
+            data-plasmic-override={overrides.freeBox}
+            className={classNames(defaultcss.all, sty.freeBox)}
+          >
+            <HorizonalContainer
+              data-plasmic-name={"testimonials"}
+              data-plasmic-override={overrides.testimonials}
+              className={classNames("__wab_instance", sty.testimonials, {
+                [sty.testimonials__design]: hasVariant(
+                  variants,
+                  "design",
+                  "design"
+                )
+              })}
+            >
+              {(hasVariant(variants, "design", "design") ? true : false) ? (
+                <WorkItem
+                  className={classNames("__wab_instance", sty.workItem__x0VmH, {
+                    [sty.workItem__design__x0VmHd5EyD]: hasVariant(
+                      variants,
+                      "design",
+                      "design"
+                    )
+                  })}
+                />
+              ) : null}
+              {(hasVariant(variants, "design", "design") ? true : false) ? (
+                <WorkItem
+                  className={classNames(
+                    "__wab_instance",
+                    sty.workItem___6Vpih,
+                    {
+                      [sty.workItem__design___6Vpihd5EyD]: hasVariant(
+                        variants,
+                        "design",
+                        "design"
+                      )
+                    }
+                  )}
+                />
+              ) : null}
+              {(hasVariant(variants, "design", "design") ? true : false) ? (
+                <WorkItem
+                  className={classNames("__wab_instance", sty.workItem__llGpJ, {
+                    [sty.workItem__design__llGpJd5EyD]: hasVariant(
+                      variants,
+                      "design",
+                      "design"
+                    )
+                  })}
+                />
+              ) : null}
+            </HorizonalContainer>
           </div>
         </div>
       </div>
@@ -113,17 +155,17 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "workItem", "text"],
-  workItem: ["workItem", "text"],
-  text: ["text"]
+  root: ["root", "freeBox", "testimonials"],
+  freeBox: ["freeBox", "testimonials"],
+  testimonials: ["testimonials"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  workItem: typeof WorkItem;
-  text: "div";
+  freeBox: "div";
+  testimonials: typeof HorizonalContainer;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -187,8 +229,8 @@ export const PlasmicHomepage = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    workItem: makeNodeComponent("workItem"),
-    text: makeNodeComponent("text"),
+    freeBox: makeNodeComponent("freeBox"),
+    testimonials: makeNodeComponent("testimonials"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

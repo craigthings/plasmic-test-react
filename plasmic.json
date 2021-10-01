@@ -52,6 +52,19 @@
           "cssFilePath": "plasmic/blank_project/PlasmicWorkItem.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "ImdPFYAZQh",
+          "name": "HorizonalContainer",
+          "type": "managed",
+          "projectId": "5TUFsMr1jutmu8n3UiyCoV",
+          "renderModuleFilePath": "plasmic/blank_project/PlasmicHorizonalContainer.tsx",
+          "importSpec": {
+            "modulePath": "HorizonalContainer.tsx"
+          },
+          "cssFilePath": "plasmic/blank_project/PlasmicHorizonalContainer.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [],
