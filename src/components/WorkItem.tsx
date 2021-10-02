@@ -6,6 +6,7 @@ import {
   DefaultWorkItemProps
 } from "./plasmic/blank_project/PlasmicWorkItem";
 import { HTMLElementRefOf } from "@plasmicapp/react-web";
+import gsap from "gsap/all";
 
 // Your component props start with props for variants and slots you defined
 // in Plasmic, but you can add more here, like event handlers that you can
@@ -23,22 +24,29 @@ import { HTMLElementRefOf } from "@plasmicapp/react-web";
 interface WorkItemProps extends DefaultWorkItemProps {}
 
 function WorkItem_(props: WorkItemProps, ref: HTMLElementRefOf<"div">) {
-  // Use PlasmicWorkItem to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicWorkItem are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, we are just piping all WorkItemProps here, but feel free
-  // to do whatever works for you.
+    let componentRef = React.useRef<HTMLDivElement>(null);
+    let dom: HTMLDivElement | null;
 
-  return <PlasmicWorkItem root={{ ref }} {...props} />;
+    React.useEffect(() => {
+      dom = componentRef.current;
+      if(!dom) return;
+
+      let image = dom.querySelector("#image") as HTMLImageElement;
+      gsap.from(image, {duration: 1, opacity: 0, scale: 0.8});
+
+      let headline = dom.querySelector('#headline') as HTMLElement;
+      gsap.from(headline, {duration: 1, opacity: 0, y: "-10"});
+
+      let description = dom.querySelector('#description') as HTMLElement;
+      gsap.from(description, {duration: 1, opacity: 0, x: "-20"});
+
+    });
+    
+    return (
+      <div ref={componentRef}>
+        <PlasmicWorkItem root={{ ref }} {...props} />
+      </div>
+    )
 }
 
 const WorkItem = React.forwardRef(WorkItem_);
