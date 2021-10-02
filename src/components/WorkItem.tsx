@@ -8,19 +8,6 @@ import {
 import { HTMLElementRefOf } from "@plasmicapp/react-web";
 import gsap from "gsap/all";
 
-// Your component props start with props for variants and slots you defined
-// in Plasmic, but you can add more here, like event handlers that you can
-// attach to named nodes in your component.
-//
-// If you don't want to expose certain variants or slots as a prop, you can use
-// Omit to hide them:
-//
-// interface WorkItemProps extends Omit<DefaultWorkItemProps, "hideProps1"|"hideProp2"> {
-//   // etc.
-// }
-//
-// You can also stop extending from DefaultWorkItemProps altogether and have
-// total control over the props for your component.
 interface WorkItemProps extends DefaultWorkItemProps {}
 
 function WorkItem_(props: WorkItemProps, ref: HTMLElementRefOf<"div">) {
